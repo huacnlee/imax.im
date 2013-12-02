@@ -1,0 +1,42 @@
+/*
+
+        Creating a sprite from following images:
+        
+        app/assets/images/sprites/source/56.png (32x32)
+        app/assets/images/sprites/source/funshion.png (32x32)
+        app/assets/images/sprites/source/iqiyi.png (32x32)
+        app/assets/images/sprites/source/kankan.png (32x32)
+        app/assets/images/sprites/source/ku6.png (32x32)
+        app/assets/images/sprites/source/letv.png (32x32)
+        app/assets/images/sprites/source/m1905.png (32x32)
+        app/assets/images/sprites/source/pps.png (32x32)
+        app/assets/images/sprites/source/pptv.png (32x32)
+        app/assets/images/sprites/source/qq.png (32x32)
+        app/assets/images/sprites/source/sina.png (32x32)
+        app/assets/images/sprites/source/sohu.png (32x32)
+        app/assets/images/sprites/source/tudou.png (32x32)
+        app/assets/images/sprites/source/youku.png (32x32)
+
+        Output files:
+          app/assets/images/sprites/source.png
+          app/assets/stylesheets/sprites/source.scss
+
+        Output size:
+          448x32
+
+
+*/
+.source_56 { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) 0px 0px no-repeat; background-size: 224px 16px; }
+.source_funshion { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -16px 0px no-repeat; background-size: 224px 16px; }
+.source_iqiyi { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -32px 0px no-repeat; background-size: 224px 16px; }
+.source_kankan { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -48px 0px no-repeat; background-size: 224px 16px; }
+.source_ku6 { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -64px 0px no-repeat; background-size: 224px 16px; }
+.source_letv { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -80px 0px no-repeat; background-size: 224px 16px; }
+.source_m1905 { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -96px 0px no-repeat; background-size: 224px 16px; }
+.source_pps { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -112px 0px no-repeat; background-size: 224px 16px; }
+.source_pptv { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -128px 0px no-repeat; background-size: 224px 16px; }
+.source_qq { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -144px 0px no-repeat; background-size: 224px 16px; }
+.source_sina { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -160px 0px no-repeat; background-size: 224px 16px; }
+.source_sohu { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -176px 0px no-repeat; background-size: 224px 16px; }
+.source_tudou { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -192px 0px no-repeat; background-size: 224px 16px; }
+.source_youku { width: 16px; height: 16px; background: url(image-path('sprites/source.png')) -208px 0px no-repeat; background-size: 224px 16px; }

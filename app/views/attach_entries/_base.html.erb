@@ -1,0 +1,13 @@
+<div class="box">
+  <div class="nav nav-pills">
+    <%= link_to small_icon_tag("icon-upload icon-white",:label => "发布资源"), new_attach_entry_path, :class => "btn btn-primary" %>
+    <div class="search_box pull-right">
+      <form action="<%= search_attach_entries_path %>" class="form-horizontal" method="get">
+        <div class="input-append">
+          <input type="text" name="q" class="span2" value="<%= params[:q] %>" placeholder="在这里搜索" />
+          <button type="submit" class="btn">搜索</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

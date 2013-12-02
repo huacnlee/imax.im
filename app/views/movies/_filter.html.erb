@@ -1,0 +1,24 @@
+<form class="filters" action="<%= movies_path %>" method="GET">
+  <div class="items">
+    <% MOVIE_FILTER_DATAS.each do |filter| %>
+    <% last_value = params[filter[0]] || "" %>
+      <div class="filter row">
+        <div class="span1"><%= filter[1][0] %>:</div>
+        <div class="span7">
+          <% filter[1][1].each do |item| %>
+            <% class_name = item[1].to_s == last_value.try(:downcase) ? "active" : "" %>
+            <%= link_to item[0], movie_list_filter_url(filter[0], item[1]), :class => class_name, :rel => "nofollow" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="sorts">
+    <span>排序:</span>
+    <% last_sort = params[:sort] || "upload" %>
+    <% MOVIE_SORT_DATAS.each do |item| %>
+      <% class_name = item[1].to_s == last_sort.try(:downcase) ? "sort active" : "sort" %>
+      <%= link_to item[0],movie_list_filter_url(:sort,item[1]), :class => class_name, :rel => "nofollow" %>
+    <% end %>
+  </div>
+</form>

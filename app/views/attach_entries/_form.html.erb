@@ -1,0 +1,17 @@
+<div id="attach_entry" class="form">
+
+<%= simple_form_for(@attach_entry) do |f| %>
+  <%= render "/shared/error_messages", :target => @attach_entry  %>
+  <fieldset>
+      <%= f.input :movie_name, :input_html => { :class => "span3" } %>
+      <%= f.input :format, :as => :select, :collection => [["电驴","ed2k"],["磁力连接","magnet"]] %>
+      <%= f.input :url, :as => :text, :input_html => { :style => "width:700px;height:80px;" } %>
+      <%= f.input :name, :input_html => { :class => "span7" } %>
+      <%= f.input :quality, :as => :radio, :collection => AttachBase.quality_collection %>
+      <%= f.input :file_size, :input_html => { :class => "span1" }, :hint => "单位 GB" %>
+      <div class="form-actions">
+      <%= f.submit "保存", :class => "btn btn-primary" %> or <%= link_to "取消", attach_entries_path %>
+    </div>
+  </fieldset>
+<% end %>
+</div>

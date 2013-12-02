@@ -1,0 +1,32 @@
+<%%= render 'base' %>
+<div id="<%= plural_table_name %>">
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>编号</th>
+<% attributes.each do |attr| -%>
+        <th><%%= t("mongoid.attributes.<%= file_name %>.<%= attr.name %>") %></th>
+<% end -%>
+        <th>创建时间</th>
+        <th class="opts"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <%% @<%= plural_file_name %>.each do |item| %>
+    <tr class="<%%= cycle("","even") %>">
+        <td><%%= link_to item.id, <%= singular_table_name %>_path(item.id) %></td>
+<% attributes.each do |attr| -%>
+        <td><%%= item.<%= attr.name %> %></td>
+<% end -%>
+        <td><%%= l(item.created_at, :format => :long) %></td>
+        <td>
+          <%%= link_to "", edit_<%= singular_table_name %>_path(item.id), :class => "icon-edit" %>
+          <%%= link_to '', <%= singular_table_name %>_path(item.id), :method => :delete, :'data-confirm' => '确定要删除吗?', :class => "icon-remove" %>
+        </td>
+      </tr>
+    <%% end %>
+    <tbody>
+  </table>
+  <%%= will_paginate @<%= plural_file_name %> %>
+</div>
+

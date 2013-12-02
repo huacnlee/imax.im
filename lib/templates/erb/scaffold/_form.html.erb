@@ -1,0 +1,20 @@
+<div id="<%= singular_table_name %>" class="form">
+<%
+  form_model_name = "@#{file_name}"
+  if controller_class_name.include?('::')
+    namespace = controller_class_name.split('::').first.downcase
+    form_model_name = "[:#{namespace},@#{file_name}]"
+  end
+%>
+<%%= simple_form_for(<%= form_model_name %>) do |f| %>
+  <%%= render "/shared/error_messages", :target => @<%= file_name %>  %>
+  <fieldset>
+  <% for attribute in attributes -%>
+    <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %> %>
+  <% end -%>
+    <div class="form-actions">
+      <%%= f.submit "保存", :class => "btn btn-primary" %> or <%%= link_to "取消", <%= index_helper %>_path %>
+    </div>
+  </fieldset>
+<%% end %>
+</div>

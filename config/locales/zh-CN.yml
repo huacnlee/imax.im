@@ -1,0 +1,157 @@
+"zh-CN":
+  attach:
+    format:
+      torrent: "BT"
+      thunder: "迅雷快传"
+      ed2k: "电驴"
+      magnet: "磁力连接"
+  source:
+    site:
+      unknow: 其他
+      letv: 乐视网
+      youku: 优酷
+      tudou: 土豆网
+      sohu: 搜狐视频
+      qq: 腾讯视频
+      funshion: 风行网
+      iqiyi: 爱奇异
+      "56": "56网"
+      sina: 新浪视频
+      ku6: "酷6网"
+      kankan: "迅雷看看"
+      m1905: "电影网"
+      pptv: "PPTV"
+      pps: "PPS"
+  site_config:
+    footer_html: 页脚 HTML
+    notice: 系统公告数据（一行一个）
+    before_attach_list: 资源下载之前的 HTML
+    after_attach_list: 资源下载之后的 HTML
+    after_header: 导航栏下面的 HTML
+    bbs_sidebar: 论坛边栏 HTML
+    after_attach_form: 上传附件之后的 HTML
+    before_entries_list: 资源列表之前的 HTML
+    after_entries_list: 资源列表之后的 HTML
+    home_suggest_movie_ids: 首页特别推荐电影（ids, 多个以逗号隔开）
+    home_us_movie_ids: 首页美国电影（ids, 多个以逗号隔开）
+    home_cn_movie_ids: 首页中国电影（ids, 多个以逗号隔开）
+    home_kr_movie_ids: 首页韩国电影（ids, 多个以逗号隔开）
+    home_series_ids: 首页推荐剧集（ids, 多个以逗号隔开）
+    home_cartoon_movie_ids: 首页动画电影（ids, 多个以逗号隔开）
+    home_meta_keywords: 首页 Meta Keywords
+    home_meta_description: 首页 Meta Description
+  mongoid:
+    models:
+      user: "用户"
+      movie: "影片"
+      site_config: "系统配置"
+    attributes:
+      user:
+        name: "昵称"
+        email: "Email"
+        avatar: "头像"
+        bio: "个人介绍"
+        password: "密码"
+        password_confirmation: "确认密码"
+        website: "个人主页"
+        remember_me: 记住登录状态
+        current_password: 旧密码
+        verified: "信任用户"
+        captcha: "验证码"
+      movie:
+        hide: 隐藏
+        title: 片名
+        tagline: 一句话描述
+        imdb: IMDB
+        time_length: 时长
+        country_list: 国家/地区
+        category_list: 类型
+        language_list: 语言
+        pub_date: 上映日期
+        year: 年份
+        cover: 封面
+        cover_url: 封面图地址
+        bg: 背景图
+        bg_url: 背景图地址
+        bg_offset: 背景偏移
+        douban_url: 豆瓣电影地址
+        imdb_url: IMDB
+        rank: 豆瓣平均分
+        website: 官方网站
+        summary: 简介
+        alias_list: 又名
+        category_list: 类型
+        tag_list: 标签
+        director_list: 导演
+        actor_list: 主演
+        last_uploaded_at: 最后上传时间
+        series: 电视剧
+        desc: 列表摘要
+        raters_count: 看过的人
+        lock: 锁定
+        episodes: 集数
+      attach_base:
+        name: 文件名
+        quality: 品质
+        url: 资源地址
+        file_size: 电影文件大小
+        format: 资源格式
+        file: 上传种子
+        movie_name: 影片名称
+        allow_update_uploaded_at: 是否往电影列表前面推
+      source:
+        site: 网站别名
+        url: 播放页面地址
+    errors:
+      messages:
+        inclusion: "不包含于列表中"
+        exclusion: "是保留关键字"
+        invalid: "是无效的"
+        confirmation: "与确认值不匹配"
+        accepted: "必须是可被接受的"
+        empty: "不能留空"
+        blank: "不能为空字符"
+        too_long: "过长（最长为 %{count} 个字符）"
+        too_short: "过短（最短为 %{count} 个字符）"
+        wrong_length: "长度非法（必须为 %{count} 个字符）"
+        taken: "已经被使用"
+        not_a_number: "不是数字"
+        not_an_integer: "必须是整数"
+        greater_than: "必须大于 %{count}"
+        greater_than_or_equal_to: "必须大于或等于 %{count}"
+        equal_to: "必须等于 %{count}"
+        less_than: "必须小于 %{count}"
+        less_than_or_equal_to: "必须小于或等于 %{count}"
+        odd: "必须为单数"
+        even: "必须为双数"
+        record_invalid: "校验失败: %{errors}"
+        taken:
+          已占用
+        document_not_found:
+          没有发现类是 %{klass} ID 是 %{identifiers} 的文档
+        invalid_database:
+          数据库应该是Mongo::DB,而不是%{name}.
+        invalid_type:
+          在类%{klass}中定义了字段,实际值是%{value}的%{other}.
+        unsupported_version:
+          MongoDB %{version} 版本已过期，请升级到 %{mongo_version}.
+        validations:
+          校验失败 - %{errors}.
+        invalid_collection:
+          不允许直接访问嵌入式的集合%{klass} , 请从文档的根访问集合.
+        invalid_field:
+          字段的名字不允许为 %{name}. 你不应该定义跟Mongoid内部属性或者方法相同的名字，详细请看Use Document#instance_methods.
+        too_many_nested_attribute_records:
+          被关联的%{association} 嵌入式属性不能超过 %{limit}.
+        embedded_in_must_have_inverse_of:
+          embedded_in的关联属性必须包含inverse_of.
+        dependent_only_references_one_or_many:
+          dependent => destroy|delete 选项只有在references_one或者references_many时候有效.
+        association_cant_have_inverse_of:
+          在当前的关联中，不允许定义inverse_of去,其只有在embedded_in或者references_many是数组的情况下使用
+        unsaved_document:
+          You cannot call create or create! through a relational association
+          relation (%{document}) who's parent (%{base}) is not already saved.
+
+
+

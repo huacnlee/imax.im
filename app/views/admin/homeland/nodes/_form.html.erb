@@ -1,0 +1,15 @@
+<div id="admin_homeland_node" class="form">
+
+	<%= simple_form_for([:admin, :homeland,@node]) do |f| %>
+  <%= render "/shared/error_messages", :target => @node  %>
+  <fieldset>
+      <%= f.input :section_id, :as => :select, :collection => Homeland::Section.all.collect { |s| [s.name,s.id] } %>
+      <%= f.input :name %>
+      <%= f.input :sort %>
+	  <%= f.input :summary %>
+      <div class="form-actions">
+      <%= f.submit "保存", :class => "btn btn-primary" %> or <%= link_to "取消", admin_homeland_nodes_path %>
+    </div>
+  </fieldset>
+<% end %>
+</div>

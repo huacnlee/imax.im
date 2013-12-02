@@ -1,0 +1,16 @@
+'zh-CN':
+  simple_form:
+    hints:
+      movie:
+        desc: '100字左右的介绍'
+        douban_url: "如：　http://movie.douban.com/subject/1985677"
+        imdb_url: '可以填写 IMDB 编号或地址，比如: http://www.imdb.com/title/tt1366344/'
+        lock: 锁定后将无法上传资源
+        bg_offset: 默认的是 background:center 20%; 此处可以改变 20% 此处的值。
+      attach:
+        name: 如：肖申克的救赎.2011.720p.中文字幕.mkv
+        file_size: "单位: GB"
+      attach_entry:
+        movie_name: 用于搜索关联电影
+        name: 如：肖申克的救赎.2011.720p.中文字幕.mkv
+        file_size: "单位: GB"

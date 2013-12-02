@@ -1,0 +1,40 @@
+<% if !movie.hide %>
+<section class="movie<%= cycle(""," odd") %> span6 clearfix">
+  <div class="cover"><%= movie_cover_tag(movie, :style => :normal) %></div>
+  <div class="infos">
+    <ul>
+      <li class="name"><%= movie_title_tag(movie, :allow_year => true) %></li>
+      <li class="rank"><%= movie_rank_tag(movie, :style => :big) %></li>
+      <% if !mobile? %>
+      <% if !movie.countries.blank? %>
+      <li><label>地区:</label><div class="tags"><%= movie_tags_tag(movie, :countries, :limit => 1) %></div></li>
+      <% end %>
+      <% if !movie.directors.blank? %>
+      <li><label>导演:</label><div class="tags"><%= movie_tags_tag(movie, :directors, :limit => 1) %></div></li>
+      <% end %>
+      <% if !movie.actors.blank? %>
+      <li><label>主演:</label><div class="tags"><%= movie_tags_tag(movie, :actors, :limit => 3) %></div></li>
+      <% end %>
+      
+      <% if !movie.categories.blank? %>
+      <li><label>类型:</label><div class="tags"><%= movie_tags_tag(movie, :categories, :limit => 2) %></div></li>
+      <% end %>
+      <li>
+        <label>资源:</label>
+        <div class="tags">
+          <% if movie.has_attach? %>
+          <%= link_to "#{movie.attachs.count} 个下载地址", movie_path(movie), :class => "down" %>
+          <% else %>
+            暂无资源
+          <% end %>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+    <div class="info">
+      
+      
+    </div>
+  </div>
+</section>
+<% end %>

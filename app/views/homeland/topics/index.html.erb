@@ -1,0 +1,36 @@
+<%= render 'base' %>
+<% content_for :breadcrumb do %>
+	<% if @node.blank? %>
+	  <li>首页</li>
+  <% else %>
+    <li><%= @node.name %></li>
+	<% end %>
+<% end %>
+<%= render 'sidebar' %>
+
+<div class="content">
+	<div class="box">
+    <% if !@node.blank? %>
+    <div id="node_info">
+      <p>
+        <h1><%= @node.name %></h1>
+        <span class="total">共有 <%= @node.topics_count %> 个讨论主题</span>
+      </p>
+    </div>
+    <% else %>
+      <h1 class="bbs_name">讨论区</h1>
+    <% end %>
+    <div class="topics">
+	 <%= render :partial => "topic", :collection => @topics %>
+    </div>
+
+    <% if params[:action] == "index" %>
+      <div class="more">
+        <a href="<%= recent_topics_path %>">查看更多最近发布的帖子...</a>
+      </div>
+    <% elsif params[:action] == "node" or params[:action] == "search" %>
+      <%= will_paginate @topics %>
+    <% end %>
+	</div>
+</div>
+

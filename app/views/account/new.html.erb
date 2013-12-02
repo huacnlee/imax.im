@@ -1,0 +1,28 @@
+<% content_for :sitemap do %><span class="current">加入社区</span><% end %>
+<div class="content">
+    <div class="box">
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <fieldset>
+        <legend>注册新用户</legend>
+        <%= render "shared/error_messages", :target => resource %>
+        <%= f.input :name %>
+        <%= f.input :email, :input_html => {:class => "span6"} %>
+        <%= f.input :password, :as => :password, :hint => "采用最为安全的 Bcrypt 加密算法，请放心输入，我们不是 CSDN" %>
+        <%= f.input :password_confirmation, :as => :password %>
+        <%= render "/shared/captcha_field", :f => f %>
+        <div class="form-actions">
+          <%= f.submit "提交注册信息", :class => "btn btn-primary", :'data-disable-with' => "提交中..." %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
+
+<%= content_for :sidebar do %>
+  <div class="box">
+    <h2>已经有了账号?</h2>
+    <p style="line-height:20px;">
+      <%= render :partial => "devise/shared/links" %>
+    </p>
+  </div>
+<% end %>

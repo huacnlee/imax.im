@@ -1,0 +1,15 @@
+<div class="pull-right">
+  <span class="label">目前已有 <%= User.count %> 个注册会员。</span>
+</div>
+
+<div class="box user_list">
+  <h2>最近加入</h2>
+  <div class="content row">
+    <% @recent_users.each do |user| %>
+      <div class="span1 user">
+        <%= user_avatar_tag(user, :style => :normal) %><br />
+        <%= user_name_tag(user) %>
+      </div>
+    <% end %>
+  </div>
+</div>

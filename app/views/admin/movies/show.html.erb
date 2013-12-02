@@ -1,0 +1,95 @@
+<%= render 'base' %>
+<div id="admin_movie">
+  <div class="buttons">
+    <%= link_to '修改', edit_admin_movie_path(@movie), :class => "btn small success" %>
+  </div>
+  <dl class="dl-horizontal">
+    <dt><%= t("mongoid.attributes.movie.title") %></dt>
+    <dd><%= @movie.title %></dd>
+    <dt><%= t("mongoid.attributes.movie.alias_list") %></dt>
+    <dd><%= @movie.alias_list %></dd>
+  </dl>
+  <hr />
+  <div class="actions">
+    <%= link_to "批量删除", delete_attachs_admin_movie_path(@movie.id), :class => "btn btn-danger pull-right", :onclick => "return batchDelete(this);" %> 
+    <a href="#" onclick="return chooseWithoutAVI();" class="btn">选择 AVI</a>
+    <a href="#" onclick="return chooseSmallFiles();" class="btn">小于 1G 的文件</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          <a href="#" onclick="return chooseAll();">全选</a> 
+          <a href="#" onclick="return revertChoose();">反选</a>
+        </th>
+        <th>扩展名</th>
+        <th>大小(Gb)</th>
+        <th>文件名</th>
+        <th>user_id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @movie.attachs.desc(:file_size).each do |attach| %>
+        <tr id="attach<%= attach.id %>">
+          <td data-ext="<%= attach.ext %>" data-small="<%= '1' if attach.file_size < 1  %>"><input type="checkbox" name="ids" value="<%= attach.id %>" /></td>
+          <td><%= attach.ext %></td>
+          <td><%= attach.file_size %></td>
+          <td><a href="<%= attach.download_url %>"><%= attach.name %></a></td>
+          <td><%= attach.user_id %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<script type="text/javascript">
+  function batchDelete(el) {
+    if(!confirm("确定要删除选择这些么？")){
+      return false;
+    }
+    $(el).text("删除中...").addClass("disabled");
+    url = $(el).attr("href");
+    ids = [];
+    $("input[name=ids]").each(function(){
+      ch = $(this);
+      if(ch.attr('checked')){
+        ids.push(ch.val());
+      }
+    })
+    $.post(url,{ ids : ids }, function(re){
+      for(var i=0;i<ids.length;i++){
+        $("tr#attach"+ids[i]).fadeOut('fast').remove();
+      }
+      $(el).text("批量删除").removeClass("disabled");
+    })
+    return false;
+  }
+
+  function chooseAll(){
+    $("input[name=ids]").attr("checked",true);
+    return false;
+  }
+
+  function chooseWithoutAVI(){
+    $("td[data-ext=avi] input").each(function(){
+      ch = $(this);
+      ch.attr('checked', true);
+    })
+    return false;
+  }
+
+  function chooseSmallFiles(){
+    $("td[data-small=1] input").each(function(){
+      ch = $(this);
+      ch.attr('checked', true);
+    })
+    return false;
+  }
+
+  function revertChoose() {
+    $("input[name=ids]").each(function(){
+      ch = $(this);
+      ch.attr('checked', !ch.attr('checked'));
+    })
+    return false;
+  }
+</script>

@@ -1,0 +1,20 @@
+<div class="box">
+  <%= simple_form_for([@movie,@source]) do |f| %>
+    <%= render "shared/error_messages", :target => @source %> 
+    <fieldset>
+      <legend>上传 《<%= movie_title_tag(@movie, :allow_year => true) %>》 的在线播放资源</legend>
+      <div class="control-group url required">
+        <label class="url required control-label" for="source_url">目前支持的网站</label>
+        <div class="controls">
+          <%= Source.site_collection.collect { |site| site[0] }.join(" • ") %> <br />
+          其他网站将无法提交。
+        </div>
+      </div>
+      <%= f.input :url, :input_html => { :class => "span7" } %>
+      <div class="form-actions">
+        <%= f.submit "提交", :class => "btn btn-primary" %> 或
+        <%= link_to '返回', movie_path(params[:movie_id]) %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

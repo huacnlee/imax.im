@@ -1,0 +1,14 @@
+'zh-CN':
+  mongoid:
+    models:
+      homeland/topic: "话题"
+      homeland/reply: "回复"
+      homeland/section: "大节点"
+      homeland/node: "节点"
+    attributes:
+      homeland/topic:
+        title: "标题"
+        body: "正文"
+        user_id: "用户"
+      homeland/reply:
+        body: "回复内容"

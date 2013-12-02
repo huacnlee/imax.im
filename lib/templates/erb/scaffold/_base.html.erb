@@ -1,0 +1,27 @@
+<%%= content_for :styles do %>
+<%% end %>
+
+<ul class="nav nav-tabs">
+  <li<%%= " class=active" if action_name == "index" %>>
+    <%%= link_to "列表", <%= table_name %>_path %>
+  </li>
+  <%% if action_name.in?(%w(edit update)) %>
+  <li class="active"><%%= link_to "修改", edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %></li>
+  <%% end %>
+  <%% if action_name.in?(%w(show)) %>
+  <li class="active"><%%= link_to "查看", <%= singular_table_name %>_path(@<%= singular_table_name %>) %></li>
+  <%% end %>
+  <li<%%= " class=active" if action_name.in?(%w(new create)) %>><%%= link_to "新建", new_<%= singular_table_name %>_path %></li>
+</ul>
+<form onsubmit="return goToId();">
+  <div class="input-append pull-right" style="margin-top:-35px;">
+    <input type="text" placeholder="编号直达" id="fastGoId" name="id" class="span1" style="margin-bottom:0px;line-height:14px;" /><button class="btn" id="fastGo" type="submit">查看</button>
+  </div>
+  <script type="text/javascript">
+    function goToId(){
+      id = $("#fastGoId").val()
+      location.href = "<%%= <%= table_name %>_path %>/" + id;
+      return false;
+    }
+  </script>
+</form>

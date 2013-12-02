@@ -1,0 +1,32 @@
+<% content_for :sidebar do %>
+  <% if admin? %>
+  <div class="box">
+    <h2>管理</h2>
+    <div class="content">
+      <%= link_to "修改会员信息", edit_admin_user_path(@user.id) %>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="box">
+    <h2>个人信息</h2>
+    <div class="content">
+      <div style="text-align:center;margin-bottom:8px;"><%= user_avatar_tag(@user, :style => :big)%></div>
+      <ul class="infos">
+        <li>注册于: <%= @user.created_at.to_date %></li>
+        <% unless @user.website.blank? %>
+        <li><%= auto_link @user.website %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <% if !@user.bio.blank? %>
+  <div class="box">
+    <h2>个人介绍</h2>
+    <div class="content">
+      <%= simple_format @user.bio %>
+    </div>
+  </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,26 @@
+<%= render "base" %>
+<%= raw SiteConfig.before_entries_list %>
+<table id="attach_entries" class="table">
+  <thead>
+    <tr>
+      <th>类型</th>
+      <th>品质</th>
+      <th>文件名</th>
+      <th>大小</th>
+      <th>发布时间</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attachs.each do |attach| %>
+      <tr>
+        <td><%= attach.ftype_s %></td>
+        <td><%= attach.quality_s %></td>
+        <td class="name"><%= attach_entry_name_tag(attach) %></td>
+        <td><%= attach.file_size %>G</td>
+        <td><%= timeago(attach.created_at) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @attachs, :inner_window => 2, :outer_window => 1 %>
+<%= raw SiteConfig.after_entries_list %>

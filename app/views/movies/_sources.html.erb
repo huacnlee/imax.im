@@ -1,0 +1,12 @@
+<% if !movie.sources.blank? %>
+<div class="box sources">
+  <% if movie.series == true %>
+    <strong>《<%= movie.title %>》全集在线观看地址: </strong>
+  <% else %>
+    <strong>《<%= movie.title %>》在线观看地址: </strong>
+  <% end %>
+  <% movie.sources.each do |source| %>
+    <%= link_to raw("<i class='icon source_#{source.site}'></i> #{source.site_s}"),movie_source_path(movie,source), class: "ssite btn btn-mini", target: "_blank", rel: "nofollow", title: source.site_s %>
+  <% end %>
+</div>
+<% end %>

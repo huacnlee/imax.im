@@ -1,0 +1,12 @@
+<%= content_for :styles do %>
+<% end %>
+
+<ul class="nav nav-tabs">
+  <li<%= " class=active" if action_name == "index" %>>
+    <%= link_to "列表", admin_homeland_sections_path %>
+  </li>
+  <% if action_name.in?(%w(edit update)) %>
+  <li class="active"><%= link_to "修改", edit_admin_homeland_section_path(@admin_homeland_section) %></li>
+  <% end %>
+  <li<%= " class=active" if action_name.in?(%w(new create)) %>><%= link_to "新建", new_admin_homeland_section_path %></li>
+</ul>

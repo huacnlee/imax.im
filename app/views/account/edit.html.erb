@@ -1,0 +1,50 @@
+<div class="content">
+  <div class="box">
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put}) do |f| %>
+      <fieldset>
+        <legend>个人信息</legend>
+          <% if params[:by].blank? %>
+            <%= render "shared/error_messages", :target => resource %>
+          <% end %>
+          <%= f.input :name %>
+          <%= f.input :avatar, :as => :file %>
+          <%= f.input :email, :input_html => {:class => "span6"} %>
+          <%= f.input :website, :input_html => {:class => "span6", :placeholder => "http://"} %>
+          <%= f.input :bio, :as => :text, :input_html => {:class => "span6", :rows => "6" } %>
+          <div class="form-actions">
+              <%= f.submit "更新资料", :class => "btn btn-primary", :'data-disable-with' => "提交中..." %>
+          </div>
+      </fieldset>
+    <% end %>
+  </div>
+  <div class="box">
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name,:by => :pwd), :html => { :method => :put }) do |f| %>
+      <fieldset>
+          <legend>修改密码</legend>
+          <% if params[:by] == "pwd" %>
+            <%= render "shared/error_messages", :target => resource %>
+          <% end %>
+          <input type="hidden" name="user[:by]" value="pwd" />
+          <%= f.input :current_password, :as => :password %>
+          <%= f.input :password, :as => :password %>
+          <%= f.input :password_confirmation, :as => :password %>
+          <div class="form-actions">
+              <%= f.submit "修改密码", :class => "btn btn-success", :'data-disable-with' => "提交中..." %>
+          </div>
+        </fieldset>
+      <% end %>
+  </div>
+</div>
+
+<%= content_for :sidebar do %>
+  <div class="box" style="text-align:center;">
+    <h2>当前头像</h2>
+    <div class="content">
+      <%= user_avatar_tag(@user, :style => :big, :link => false) %>
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :js do %>
+
+<% end %>

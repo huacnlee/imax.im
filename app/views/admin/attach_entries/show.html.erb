@@ -1,0 +1,21 @@
+<%= render 'base' %>
+<div id="admin_attach_entry">
+  <div class="buttons">
+    <%= link_to '修改', edit_admin_attach_entry_path(@attach_entry), :class => "btn small success" %>
+  </div>
+  <hr />
+  <dl class="dl-horizontal">
+    <dt>字段</dt>
+    <dd>值</dd>
+    <dt><%= t("mongoid.attributes.attach_entry.name") %></dt>
+    <dd><%= @attach_entry.name %></dd>
+    <dt><%= t("mongoid.attributes.attach_entry.format") %></dt>
+    <dd><%= @attach_entry.format %></dd>
+    <dt><%= t("mongoid.attributes.attach_entry.quality") %></dt>
+    <dd><%= @attach_entry.quality %></dd>
+    <dt><%= t("mongoid.attributes.attach_entry.url") %></dt>
+    <dd><%= @attach_entry.url %></dd>
+    <dt><%= t("mongoid.attributes.attach_entry.file_size") %></dt>
+    <dd><%= @attach_entry.file_size %></dd>
+  </dl>
+</div>

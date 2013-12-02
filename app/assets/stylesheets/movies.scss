@@ -1,0 +1,223 @@
+/* cover + title movie item */
+.mitem {
+  text-align: center;
+  width:100px;
+  *width: 90px;
+  margin-left:5px;
+  margin-bottom:14px;
+  height:115px;
+  overflow:hidden;
+  float:left;
+  text-overflow: ellipsis;
+  a { white-space: nowrap; }
+}
+
+#fetch-attachs-window {
+  display:none;
+}
+
+a.no_attach {
+  color:#14143C;
+}
+
+.movies {
+  .movie {
+    padding:20px 0;
+    margin-left:0px;
+    height: 200px;
+    overflow:hidden;
+    position:relative;
+    &.odd { margin-left:20px; }
+    .cover { 
+      position:absolute; top:20px; left:0; width:130px;
+      img { width:130px; }
+    }
+    .infos { 
+      padding-left:150px;
+      ul { margin:0; padding:0; }
+      li.name {
+        font-size:16px; font-weight:normal; padding:0; margin:0; line-height:100%; margin-top:5px; margin-bottom:5px;
+        .year { font-weight:normal; font-size:12px; color:#666; }
+      }
+      li {
+        list-style-type:none;
+        line-height:24px;
+        position:relative;
+        a { color:#333; display:inline-block; }
+        a.down { color:green; font-weight:bold; }
+        label { width:30px; position:absolute; top: 3px; left:0; }
+        div.tags { padding-left:36px; }
+      }
+    }
+  }
+  form.filters {
+    padding-bottom:10px;
+    margin-bottom:20px;
+    font-size:13px;
+    .items {
+      border-bottom:4px solid #eee;
+      padding:10px;
+      font-size:12px;
+      background:#F5F5F5;
+      margin-bottom:10px;
+    }
+    .filter {
+      margin-left:0px;
+      margin-bottom:5px;
+      .span1 { color:#999; text-align:right; }
+      a { color:#000; margin-right:10px; }
+      a:hover { color:green;}
+      a.active { color:#C03D33;}
+    }
+    .sorts {
+      text-align:right; color:#999;
+       a { margin:0 5px; padding-bottom:8px; }
+       a.active { color:#999; background:image_url("dot_up.png") bottom center no-repeat; font-weight:bold; text-decoration: none;}
+    }
+  }
+}
+
+
+
+#movie {
+  position:relative; 
+  h1 {
+    color:#333; 
+    font-size:28px; line-height:38px; height:38px; overflow:hidden;
+    margin-bottom:0px;
+    .year { color:#999; font-size:14px; }
+  }
+  .sub_title { 
+    padding-left:4px;
+    margin-top:5px; margin-bottom:20px; 
+    color:#999;
+    .countries,
+    .categories { margin-right:10px; color:rgba(255,255,255,0.5); }
+    .countries a { color:#a92816; }
+  }
+  position:relative;
+  .share { position:absolute; top:10px; right:10px;}
+  #subs {
+    height:102px; overflow:hidden;
+  }
+  .tagline { text-align:center; font-size:14px; color:#da524b; margin-bottom:10px; }
+  .infos {
+    .cover {
+      img { width:180px; }
+      width:210px;
+      text-align: left;
+      margin-bottom:20px;
+      margin-right:10px;
+    }
+    ul.details {
+      margin-left:0px;
+      list-style:none;
+      h2 { margin:0; padding:0; display:inline; line-height:100%; font-size:13px; font-weight:normal;}
+      li {
+        color:#666;
+        line-height:160%;
+        margin-bottom:6px;
+        a { 
+          color:#555; text-decoration: none; display:inline-block;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        b { color:#999; margin-right:6px; font-weight:normal;}
+      }
+    }
+    .reviews {
+      margin-bottom:30px;
+      .raters_count {
+        a { color:#BF7F2E; text-decoration: underline; }
+        margin-bottom:10px;
+      }
+    }
+  }
+  .share { margin-top:30px; text-align:right;}
+  .book_info {
+    i.icon-book { margin-top:-1px; }
+    a { color:#51a64c; font-weight:bold; }
+    .price { color:#c64942; }
+  }
+  .attachs {
+    position:relative;
+    background:#F0F0F0;
+    padding:10px;
+    margin-bottom:5px;
+    h2 {
+      color:#D33723; margin-bottom:0;
+      span.count { color:#999; font-size:12px; margin-left:8px; font-weight:normal;}
+    }
+    .toolbar { margin-bottom:8px;}
+    .nav-pills {
+      position: absolute;
+      top: 8px;
+      margin-bottom:0;
+      li {
+        a { padding:3px 8px;}
+      }
+    }
+    table {
+      margin-bottom:8px; background:#FFF;
+      border:1px solid #fff;
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+      tr.collected {
+        td {
+          a { color:#333; }
+          &.user {
+            a { color:#999;}
+          }
+        }
+      }
+    }
+    .collect_button {
+      a { color:#333; text-decoration: underline;}
+      color:#999;
+      .count { margin-left:8px; }
+    }
+    td.qu { font-variant: small-caps; }
+    td.name { max-width:480px; color:#999; word-break : break-all; text-overflow: ellipsis;}
+    td.size { width:50px; }
+    td.user {
+      width:80px; overflow: hidden;
+      a { color:#999; text-decoration: underline;}
+    }
+    .opts {
+      text-align:right;
+    }
+    .buttons { padding-left:55px;}
+    a.uname { color:#999; text-decoration:underline; }
+    .XL_CLOUD_VOD_BUTTON_btn_b {
+      background:#fff image_url('xunlei_play_button.png') left top !important;
+      background-size:55px 21px !important;
+      width:55px !important;
+      height:21px !important;
+      margin-top:0px !important;
+      vertical-align: middle !important;
+    }
+  }
+  .sources {
+    strong { margin-right:10px; }
+    a.ssite { 
+      margin-right:7px; background:#FFF;
+      i { margin-bottom: -3px; }
+    }
+  }
+
+  #relation {
+    .item { margin-bottom:20px; height:130px; width:125px; text-align:center;}
+    .cover { 
+      margin-bottom:10px;
+      img { width:65px; }
+    }
+  }
+}
+
+#fetch-attachs-window {
+  table {
+    select { width:60px; }
+  }
+}

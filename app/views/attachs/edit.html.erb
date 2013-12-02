@@ -1,0 +1,25 @@
+<%= simple_form_for([@movie,@attach]) do |f| %>
+  <fieldset>
+    <legend>修改 《<%= movie_title_tag(@movie, :allow_year => true) %>》 的下载资源</legend>
+    <%= f.input :format, :as => :select, :collection => Attach.format_collection, :include_blank => false %>
+    <%= f.input :url, :input_html => { :class => "span7" } %>
+    <%= f.input :file, :as => :file %>
+    <%= f.input :name, :input_html => { :class => "span7" } %>
+    <%= f.input :file_size, :input_html => { :class => "span1" } %>
+    <%= f.input :quality, :as => :radio, :collection => [["480P",480],["HR-HDTV",481],["720P",720],["1080P",1080],["3D",3000]] %>
+    <div class="form-actions">
+      <%= f.submit "提交", :class => "btn btn-primary" %> 或
+      <%= link_to '返回', movie_path(params[:movie_id]) %>
+    </div>
+  </fieldset>
+<% end %>
+
+<%= raw SiteConfig.after_attach_form %>
+
+<%= content_for :js do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      Movies.initNewAttachForm();
+    })
+  </script>
+<% end %>

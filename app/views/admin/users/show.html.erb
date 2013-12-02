@@ -1,0 +1,20 @@
+<%= render 'base' %>
+<div id="admin_user">
+  <%= link_to '修改', edit_admin_user_path(@user), :class => "btn small success" %>
+    <p>
+    <b>Email:</b>
+    <%= @user.email %>
+  </p>
+    <p>
+    <b>Name:</b>
+    <%= @user.name %>
+  </p>
+    <p>
+    <b>Bio:</b>
+    <%= @user.bio %>
+  </p>
+    <p>
+    <b>Website:</b>
+    <%= @user.website %>
+  </p>
+  </div>

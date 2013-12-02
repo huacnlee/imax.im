@@ -1,0 +1,19 @@
+defaults: &defaults
+  app_name: "IMAX.im"
+  domain: "127.0.0.1:3000"
+  api_domain: "127.0.0.1:3000"
+  admin_emails:
+    - "huacnlee@gmail.com"
+  douban_token: "0898024726bbf1ec19c806d57433d5c4"
+  douban_secret: "c76674cd8c482f90"
+  xunlei_pid: 987212
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+

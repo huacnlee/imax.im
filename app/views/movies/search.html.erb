@@ -1,0 +1,12 @@
+<div class="movies">
+  <% if @search.results.blank? %>
+    <div class="no_result">
+      无法找到匹配的资源，你可以试试调整过滤条件。<%= link_to "清除过滤", movie_list_filter_url %>
+    </div>
+  <% else %>
+    <%= render :partial => "/movies/movie", :collection => @search.results.sort { |a,b| b.score <=> a.score } %>
+  <% end %>
+</div>
+<%= will_paginate @search.results, :inner_window => 2, :outer_window => 1 %>
+
+

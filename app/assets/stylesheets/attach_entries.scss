@@ -1,0 +1,20 @@
+#attach_entries {
+  td.name { width:500px; }
+}
+
+#attach_entry {
+  h1 {
+    word-break:break-all;
+    font-size:200%;
+    margin-bottom:20px;
+  }
+  .url_box {
+    padding:8px;
+    width:700px;
+    height: 80px;
+    background:#F0F0F0;
+    -moz-box-shadow: inset 1px 1px 2px #ccc;
+    -webkit-box-shadow: inset 1px 1px 2px #ccc;
+    box-shadow: inset 1px 1px 2px #ccc;
+  }
+}

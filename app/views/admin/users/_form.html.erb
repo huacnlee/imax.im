@@ -1,0 +1,18 @@
+<div id="admin_user" class="form">
+
+<%= simple_form_for([:admin,@user]) do |f| %>
+  <%= render "/shared/error_messages", :target => @user  %>
+  <fieldset>
+      <%= f.input :email %>
+      <%= f.input :name %>
+      <%= f.input :bio %>
+      <%= f.input :website %>
+      <%= f.input :verified, :as => :boolean %>
+      <%= f.input :points, :as => :integer %>
+      <%= f.input :level, :as => :integer %>
+      <div class="form-actions">
+      <%= f.submit "保存", :class => "btn btn-primary" %> or <%= link_to "取消", admin_users_path %>
+    </div>
+  </fieldset>
+<% end %>
+</div>

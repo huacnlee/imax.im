@@ -1,0 +1,67 @@
+<div id="home_page">
+  <% cache("home_suggest_movies/#{SiteConfig.home_suggest_movie_ids}", :expires_in => 1.weeks) do %>
+  <div class="box1 clearfix">
+    <ul class="items">
+      <% Home.suggest_movies.each do |movie| %>
+      <li class="span2 item">
+        <div class="cover">
+          <%= movie_cover_tag(movie,:style => :normal) %>
+        </div>
+        <div class="rank">
+          <%= movie_rank_tag(movie, :style => :big) %>
+        </div>
+        <div class="name">
+          <%= movie_title_tag(movie) %>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <% cache("home_us_movies/#{SiteConfig.home_us_movie_ids}", :expires_in => 1.weeks) do %>
+  <div class="box2 box_left clearfix">
+    <h2><%= link_to "美国电影", movies_path(:country => "美国") %></h2>
+    <ul class="items clearfix">
+      <%= render :partial => "movie", :collection => Home.us_movies %>
+    </ul>
+  </div>
+  <% end %>
+
+  <% cache("home_cn_movies/#{SiteConfig.home_cn_movie_ids}", :expires_in => 1.weeks) do %>
+  <div class="box2 box_right clearfix">
+    <h2><%= link_to "中国电影", movies_path(:country => "中国大陆") %></h2>
+    <ul class="items clearfix">
+      <%= render :partial => "movie", :collection => Home.cn_movies %>
+    </ul>
+  </div>
+  <% end %>
+
+  <% cache("home_kr_movies/#{SiteConfig.home_kr_movie_ids}", :expires_in => 1.weeks) do %>
+  <div class="box2 box_left clearfix">
+    <h2><%= link_to "韩国电影", movies_path(:country => "韩国") %></h2>
+    <ul class="items clearfix">
+      <%= render :partial => "movie", :collection => Home.kr_movies %>
+    </ul>
+  </div>
+  <% end %>
+
+  <% cache("home_series/#{SiteConfig.home_series_ids}", :expires_in => 1.weeks) do %>
+  <div class="box2 box_right clearfix">
+    <h2><%= link_to "电视剧", series_movies_path %></h2>
+    <ul class="items clearfix">
+      <%= render :partial => "movie", :collection => Home.series %>
+    </ul>
+  </div>
+  <% end %>
+
+
+  <% cache("home_cartoon_movies/#{SiteConfig.home_cartoon_movie_ids}", :expires_in => 1.weeks) do %>
+  <div class="box2 box_left clearfix">
+    <h2><%= link_to "动漫", movies_path(:tag => "动画") %></h2>
+    <ul class="items clearfix">
+      <%= render :partial => "movie", :collection => Home.cartoon_movies %>
+    </ul>
+  </div>
+  <% end %>
+</div>

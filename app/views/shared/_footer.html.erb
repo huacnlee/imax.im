@@ -1,0 +1,24 @@
+<footer class="footer">
+  <div class="container">
+    <% if mobile? %>
+    &copy; IMAX.im <br />
+    <%= link_to "电影周刊", main_app.weekly_movies_path, :target => "_blank" %> •
+    <%= link_to "论坛", homeland.root_path %> •
+    <a href="#">返回顶部</a>
+    <% else %>
+      <%= yield :footer %>
+      <p class="pull-right"><a href="#">回到顶部</a></p>
+      <p><%=raw SiteConfig.footer_html %></p>
+      <% if !DoubanRequest.allow? %>
+      <small>Douban API 请求已经超支。</small>
+      <% end %>
+    <% end %>
+  </div>
+</footer>
+
+<div style="width:0px;height:0px;overflow:hidden;">
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F68bb726ab7e17fd4cf0869ece9a87a6f' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>

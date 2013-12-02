@@ -1,0 +1,12 @@
+<%= render 'base' %>
+<div id="admin_site_config">
+  <%= link_to '修改', edit_admin_site_config_path(@site_config), :class => "btn small success" %>
+    <p>
+    <b>Key:</b>
+    <%= @site_config.key %>
+  </p>
+    <p>
+    <b>Value:</b>
+    <%= @site_config.value %>
+  </p>
+  </div>

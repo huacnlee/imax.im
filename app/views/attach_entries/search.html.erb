@@ -1,0 +1,20 @@
+<%= render "base" %>
+<table id="attach_entries" class="table">
+  <thead>
+    <tr>
+      <th>文件名</th>
+      <th>品质</th>
+      <th>大小</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @search.each do |item| %>
+      <tr>
+        <td class="name"><%= link_to item.name, attach_entry_path(item.id) %></td>
+        <td><%= item.quality %></td>
+        <td><%= item.file_size %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @search, :inner_window => 2, :outer_window => 1 %>

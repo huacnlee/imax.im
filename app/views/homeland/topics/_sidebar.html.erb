@@ -1,0 +1,57 @@
+<% content_for :sidebar do %>
+<div class="sidebar">
+
+  <% if params[:action] == "index" %>
+    <div class="box">
+      <h2>社区论坛</h2>
+      <div class="content">
+        <a class="btn btn-success" href="<%= new_topic_path %>">发布新帖</a>
+      </div>
+    </div>
+  <% end %>
+
+  <% if ["show","new","edit","node"].index(params[:action]) and !@node.blank? %>
+    <div class="box">
+      <h2><a href="<%= node_topics_path(@node.id) %>"><%= @node.name %></a></h2>
+      <% if ["new"].index params[:action] %>
+      <p class="sumamry">
+        <%= @node.summary %>
+      </p>
+      <% end %>
+      <div class="content">
+        <a class="btn btn-success" href="<%= new_topic_path(:node => @node.id) %>">发布新帖</a>
+      </div>
+    </div>
+  <% end %>
+
+  <% if ["new"].index(params[:action]) %>
+    <div id="topic_new_tip" class="box">
+      <h2>发贴说明</h2>
+      <ol>
+        <li>发布后正文排版会自动安你在文本框里面输入的样子排列.如果里面带有 URL地址，将会自动转变为超级链接。</li>
+      </ol>
+    </div>
+  <% end %>
+
+  <div id="sections" class="box">
+    <h2>节点分类导航</h2>
+    <div class="content">
+      <% Homeland::Node.recent.each do |node| %>
+        <a href="<%= node_topics_path(node.id) %>" title="<%= node.name %>"><%= node.name %></a>
+      <% end %>
+    </div>
+  </div>
+
+  <% if params[:action] == "index" %>
+    <div class="totals box">
+    	<h2>统计信息</h2>
+    	<ul>
+    		<li>贴子数: <%= Homeland::Topic.count %> 篇</li>
+    		<li>回贴数: <%= Homeland::Reply.count %> 条</li>
+    	</ul>
+    </div>
+  <% end %>
+
+  <%= raw SiteConfig.bbs_sidebar %>
+</div>
+<% end %>

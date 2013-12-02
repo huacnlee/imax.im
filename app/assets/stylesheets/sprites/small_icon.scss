@@ -1,0 +1,16 @@
+/*
+
+        Creating a sprite from following images:
+        
+        app/assets/images/sprites/small_icon/thumb_up.png (16x16)
+
+        Output files:
+          app/assets/images/sprites/small_icon.png
+          app/assets/stylesheets/sprites/small_icon.scss
+
+        Output size:
+          16x16
+
+
+*/
+.small_icon_thumb_up { width: 16px; height: 16px; background: url(image-path('sprites/small_icon.png')) 0px 0px no-repeat; }

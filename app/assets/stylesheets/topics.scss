@@ -1,0 +1,32 @@
+#topics {
+  .topics {
+    .topic {
+      a.count:link {
+        background-color: #1C7FDB;
+      }
+      a.count:visited { background:#ddd;}
+    }
+    
+    .body {
+      p {
+        word-break: break-all;
+      }
+    }
+  }
+
+  #sections {
+    .content {
+      a {
+        display:inline-block; margin-right:6px; margin-bottom:6px; background:#c6d0ff; padding:3px 5px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        color:#1c3321;
+        text-decoration:none;
+        &:hover { text-decoration:none; background:#4B65C6; color:#FFF;}
+      }
+    }
+  }
+}
+
+

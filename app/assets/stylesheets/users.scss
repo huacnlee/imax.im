@@ -1,0 +1,35 @@
+#users {
+  .row {
+    .user { text-align:center;}
+  }
+
+  .user_list {
+    .user {
+      width: 75px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      margin-top:10px; margin-bottom:10px;
+      a { white-space: nowrap; }
+    }
+  }
+
+  .movies {
+    .filters {
+      border-bottom:1px solid #ddd; margin-left:0; padding-bottom:5px;
+      .total { margin-left:8px; }
+    }
+  }
+
+  .notification {
+    .notify {
+      margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:5px;
+      .info {
+        color:#999;
+        span.badge { margin-left:5px; font-size:9px; line-height:100%; font-family:arial; }
+      }
+      .desc {
+        font-size:13px;
+      }
+    }
+  }
+}

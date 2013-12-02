@@ -1,0 +1,26 @@
+<div class="topic topic_line">
+  <div class="pull-left avatar">
+		<%= user_avatar_tag(topic.user) %>
+  </div>
+  <div class="right_info">
+    <div class="pull-right replies">
+      <a href="<%= topic_path(topic.id) %>#reply<%= topic.replies_count %>" class="count">
+      <%= topic.replies_count %>
+      </a>
+    </div>
+    <div class="infos">
+      <div class="title"><a href="<%= topic_path(topic) %>#reply<%= topic.replies_count %>" title="<%= topic.title %>"><%= truncate(topic.title, :length => 100) %></a></div>
+      <div class="info leader">
+        由 <%= user_name_tag(topic.user) %>
+        在 <a href="<%= node_topics_path(topic.node_id) %>"><%= topic.node.name %></a> 中发起
+      </div>
+      <div class="info time">
+        <% if topic.last_reply_user.blank? %>
+          发布于 <%= timeago(topic.created_at) %>
+        <% else %>
+          最后由 <%= user_name_tag(topic.last_reply_user) %> 回复于 <%= timeago(topic.replied_at) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

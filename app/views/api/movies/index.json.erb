@@ -1,0 +1,3 @@
+<%=
+raw ({ :movies => @movies.collect { |m| m.to_list_json }, :total_pages => @movies.total_pages}).to_json
+%>

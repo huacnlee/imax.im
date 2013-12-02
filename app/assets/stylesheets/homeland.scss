@@ -1,0 +1,99 @@
+/*
+ *= require jquery.atwho
+ *= require jquery.chosen
+ */
+ .bbs_name { text-align:right; font-size:18px;}
+.topics .topic .title a:link,
+.topics .topic .title a:visited,
+.node_topics .title a:link,
+.node_topics .title a:visited {color:#2c64d7; text-decoration: none;}
+.topics .topic  .title a:hover,
+.node_topics .title a:hover { text-decoration: underline; }
+
+.sidebar p { margin-bottom:8px;}
+
+#sections {
+  ul {
+    margin:0; list-style:none;
+    li {
+      margin-bottom:10px;
+      position:relative;
+      min-height:20px;
+      label { display:block; width:80px; text-align:right; color:#999; padding-right:10px; position:absolute; left:0; top:0; }
+      a { display:inline-block; margin-right:8px; }
+      .items { padding-left:90px; }
+    }
+
+  }
+}
+
+.topics { }
+.topics .topic {  }
+.topics .topic_line {border-top:1px solid #DDD; padding:10px 0; margin:0 -10px; vertical-align:top; }
+#main .topics .topic h1 { font-size:22px; color:#333; margin-top:6px; text-align: left; line-height:100%;margin-bottom:8px;}
+.topics .topic .avatar_large { width:80px; }
+.topics .topic .avatar { width:56px; margin-left:10px; }
+.topics .topic .infos { padding-right:90px;}
+.topics .topic .right_info { padding-left:66px;}
+.topics .topic .title { font-size:14px; }
+.topics .topic .info { color:#999; margin-bottom:2px; }
+.topics .topic .info a:link,
+.topics .topic .info a:visited { color:#999; text-decoration: underline; }
+.topics .body { line-height:160%; font-size:14px; margin-top:8px;}
+.topics .body p { margin-bottom:10px; }
+.topics .tools { text-align:right; }
+.topics .tools a {margin-left:6px;}
+.topics .topic .replies { width:70px; margin-right:10px; text-align:right; vertical-align:middle; }
+.topics .topic .replies a.count:link { line-height: 12px; font-weight: bold; color: white;
+  background-color: #1c7fdb; display: inline-block;
+  padding: 2px 10px 2px 10px;
+  -moz-border-radius: 12px; -webkit-border-radius: 12px;
+  margin: 18px 12px 0px 0px; text-decoration: none; }
+.topics .topic .replies a.count:visited { background:#ddd; color:#aaa;}
+.topics .topic .replies a.count:hover { color:write; background-color:#1F8AEE; }
+
+.topics tr.topic td.replies { text-align:right; width:50px; font-size:14px; color:green;font-weight:bold; }
+.more { padding:8px; border-top:1px solid #DDD; font-size:14px; text-align:right; }
+
+/* topics list in node page */
+.node_topics { margin-bottom:16px;}
+.node_topics tr td { padding:8px; }
+.node_topics tr.head td { padding-top:14px; color:#CCC; font-weight:bold; font-size:12px; }
+.node_topics tr.topic td.title { font-size:14px; font-weight:bold; }
+.node_topics tr.topic td.author { width:80px;}
+.node_topics tr.topic td.author a { color:#666; font-weight:bold; }
+
+.no_result { margin-bottom:20px; text-align:center; }
+
+#node_info { padding:8px;margin-bottom:8px;padding-top:0px; }
+#node_info h1 { font-size:18px; color:000; display:inline; margin-right:5px; }
+#node_info p { margin-bottom:8px; }
+#node_info p.summary { color:#999; }
+
+#replies {}
+#replies .total { padding-bottom:6px; color:#999; }
+#replies .reply { border-top:1px solid #DDD; padding:8px 10px; margin:0 -10px;}
+#replies .reply.light { background:#EFFCEE;}
+#replies .reply .face { padding-right:8px; width:48px; margin-left:0; }
+#replies .reply .infos { padding-left:58px;}
+#replies .reply .info { margin-top:4px; color:#999;height:20px;}
+#replies .reply .info a:link,
+#replies .reply .info a:visited { color:#999; text-decoration: underline;}
+#replies .reply .info .name { float:left; }
+#replies .reply .info .time { float:right; text-align:right; }
+#replies .reply .info a.reply_link img { vertical-align:middle;}
+#replies .reply .body { line-height:180%; font-size:14px; text-overflow: ellipsis;}
+#replies .reply .body img { max-width:622px;}
+
+#reply.form textarea { width:578px; }
+
+.edit_tools { text-align:right; margin-bottom:3px;}
+
+.totals ul li { line-height:150%;}
+
+#topic_new_tip li { margin-bottom:6px;}
+
+.body a.at_floor { color:#376B43; }
+.body a.at_user { }
+
+.topic_body_text_area { width:600px;}

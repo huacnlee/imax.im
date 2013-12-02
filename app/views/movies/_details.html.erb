@@ -1,0 +1,53 @@
+<%= cache([@movie,"_details"]) do %>
+<h1><span itemprop="name"><%= @movie.title %></span> <% if not @movie.year.blank? %><span class="year">(<%= @movie.year %>)</span><% end %></h1>
+<div class="sub_title">
+  <% if !@movie.time_length.blank? %>
+  <span class="time_length">
+    <%= @movie.time_length %> min
+    <% if @movie.series %> / 全剧共 <%= @movie.episodes %> 集<% end %>
+  </span> - 
+  <% end %>
+  <% if !@movie.countries.blank? %>
+  <span class="countries"><%= movie_tags_tag(@movie, :countries) %></span> 
+  <% end %>
+  <% if !@movie.categories.blank? %>
+  <span class="categories"><%= movie_tags_tag(@movie, :categories) %></span>
+  <% end %>
+</div>
+<div class="reviews" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+  <%= movie_rank_tag(@movie, :style => :big) %>
+  <div class="raters_count">
+    <%= link_to raw("豆瓣上有 <span itemprop='ratingCount'>#{@movie.raters_count}</span> 人看过"), @movie.douban_url, :rel => "nofollow", :target => "_blank" %>
+  </div>
+</div>
+<ul class="details span7">
+  <li>
+    <b><%= t("mongoid.attributes.movie.alias_list")%>:</b>
+    <h2><%= @movie.alias_list %></h2>
+  </li>
+  <li>
+    <b><%= t("mongoid.attributes.movie.language_list")%>:</b>
+    <span itemprop="inLanguage">
+      <%= movie_tags_tag(@movie, :languages) %>
+    </span>
+  </li>
+  <li>
+    <b><%= t("mongoid.attributes.movie.actor_list")%>:</b>
+    <span itemprop="actors">
+      <%= movie_tags_tag(@movie, :actors, :limit => 5) %>
+    </span>
+  </li>
+  <li>
+    <b><%= t("mongoid.attributes.movie.director_list")%>:</b>
+    <span itemprop="director">
+      <%= movie_tags_tag(@movie, :director) %>
+    </span>
+  </li>
+  <% if admin? %>
+  <li>
+    <b>TMDB:</b> 
+    <a href="http://www.themoviedb.org/search?query=<%= @movie.en_title %>" target="_blank" rel="nofollow"><%= @movie.en_title %></a>
+  </li>
+  <% end %>
+</ul>
+<% end %>

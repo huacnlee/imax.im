@@ -1,0 +1,27 @@
+<%= render "menu" %>
+
+<div class="movies">
+  <div class="filters row">
+    <span class="total">赞了 <%= @movies.total_entries %> 部电影</span>
+    <div class="btn-group  pull-right">
+      <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">
+        <%= params[:has_attach].blank? ? "全部" : "显示有下载"  %>
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><%= link_to "全部", followed_movies_user_path(@user) %></li>
+        <li><%= link_to "仅显示有下载的", followed_movies_user_path(@user,:has_attach => 1) %></li>
+      </ul>
+    </div>
+  </div>
+  <% if @movies.blank? %>
+    <div class="no_result">
+      额~~~ 咋一部电影都没赞美过吶？！<br />
+    </div>
+  <% else %>
+    <%= render :partial => "/movies/movie", :collection => @movies %>
+    <%= will_paginate @movies %>
+  <% end %>
+</div>
+
+<%= render "sidebar" %>

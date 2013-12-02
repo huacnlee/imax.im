@@ -1,0 +1,22 @@
+<ul class="breadcrumb">
+  <li>
+    <a href="<%= main_app.root_path %>" rel="nofollow">首页</a> <% if !@breadcrumbs.blank? %><span class="divider">/</span><% end %>
+  </li>
+  <% if not @breadcrumbs.blank? %>
+    <% @breadcrumbs.each_with_index do |item,i| %>
+      <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <%= link_to raw("<span itemprop='title'>#{item[0]}</span>"), item[1], :rel => "nofollow", :itemprop => "url" %>
+        <% if i + 1 < @breadcrumbs.length %>
+        <span class="divider">/</span>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+  <%= yield :breadcrumb %>
+  <% if controller_name == "home" and action_name == "index" %>
+  <li>
+    <%= render "/shared/weibo_share" %>
+  </li>
+  <% end %>
+  <li class="pull-right feed"><%= link_to raw("#{image_tag("feed@2x.png", :style => "width:16px;height:16px;")}订阅资源"), main_app.feed_movies_url %></li>
+</ul>

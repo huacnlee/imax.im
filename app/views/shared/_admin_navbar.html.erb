@@ -1,0 +1,15 @@
+<div class="subnav subnav-fixed">
+  <div class="container">
+  <ul class="nav nav-pills">
+    <li<%= " class=active" if params[:controller] == "admin/home" %>><a href="/admin">概况</a></li>
+    <li<%= " class=active" if params[:controller] == "admin/site_configs" %>><%= link_to "系统配置", admin_site_configs_path %></li>
+    <li<%= " class=active" if params[:controller] == "admin/movies" %>><%= link_to "影片", admin_movies_path %></li>
+    <li<%= " class=active" if params[:controller] == "admin/attach_entries" %>><%= link_to "资源", admin_attach_entries_path %></li>
+    <li<%= " class=active" if params[:controller] == "admin/users" %>><%= link_to "用户", admin_users_path %></li>
+  	<li<%= " class=active" if params[:controller] == "admin/homeland/topics" %>><%= link_to "话题", admin_homeland_topics_path %></li>
+  	<li<%= " class=active" if params[:controller] == "admin/homeland/replies" %>><%= link_to "回帖", admin_homeland_replies_path %></li>
+  	<li<%= " class=active" if params[:controller] == "admin/homeland/sections" %>><%= link_to "大节点", admin_homeland_sections_path %></li>
+  	<li<%= " class=active" if params[:controller] == "admin/homeland/nodes" %>><%= link_to "节点", admin_homeland_nodes_path %></li>
+  </ul>
+  </div>
+</div>

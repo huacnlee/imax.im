@@ -1,0 +1,48 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to image_tag("logo.png", :style => "width:95px;height:35px;"), main_app.root_path, :class => "brand span2" %>
+      <ul class="nav main-nav">
+        <li<%= " class=active" if params[:controller] == "home" %>><%= link_to "首页", main_app.root_path %></li>
+        <li<%= " class=active" if params[:controller] == "movies" && !params[:action].in?(%w(series top)) && @is_series.blank? %>><%= link_to "电影", main_app.movies_path %></li>
+        <li<%= " class=active" if (params[:controller] == "movies" && params[:action] == "series") || @is_series == true %>><%= link_to "电视剧", main_app.series_movies_path %></li>
+        <li<%= " class=active" if params[:controller] == "movies" && params[:action] == "top" %>><%= link_to "高分", main_app.top_movies_path %></li>
+		    <li<%= " class=active" if params[:controller].match("homeland") %> id="nav-bbs"><%= link_to "论坛", homeland.root_path %></li>
+        <li class="search_box" style="margin-left:20px;">
+          <%= render "/shared/nav_search" %>
+        </li>
+      </ul>
+      <ul class="nav user-bar pull-right">
+        <% if current_user %>
+          <li><%= link_to current_user.name, main_app.user_path(current_user) %></li>
+          <li class="dropdown" id="user_menu">
+            <a href="#user_menu" class="dropdown-toggle" data-toggle="dropdown">
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to("个人页面",main_app.user_path(current_user)) %></li>
+              <li class="divider"></li>
+              <li><%= link_to("修改个人资料",main_app.edit_user_registration_path) %></li>
+              <% if admin? %>
+              <li<%= " class=active" if controller.send(:_layout) == "admin" %>><%= link_to "后台", main_app.admin_root_path %></li>
+              <% end %>
+              <li class="divider"></li>
+              <li><%= link_to("登出", main_app.destroy_user_session_path, :method => :delete ) %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "注册", main_app.new_user_registration_path(:return => request.path), :rel => "nofollow" %></li>
+          <li><%= link_to raw("登录"), main_app.new_user_session_path(:return => request.path), :rel => "nofollow" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<% if mobile? %>
+  <%= render "/shared/nav_search" %>
+<% end %>

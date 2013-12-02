@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render_page_title %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset='utf-8'>
+  <%= stylesheet_link_tag    "application" %>
+  <%= yield :css %>
+  <%= csrf_meta_tags %>
+</head>
+<body data-spy="scroll" data-target=".subnav .navbar" data-offset="50">
+  <%= render "/shared/navbar" %>
+  <div class="container" style="margin-top:60px;">
+    <%= render "/shared/admin_navbar" %>
+    <%= notice_message %>
+    <%= yield %>
+  </div>
+  <%= render "/shared/footer" %>
+  <%= javascript_include_tag "application" %>
+  <%= yield :js %>
+</body>
+</html>

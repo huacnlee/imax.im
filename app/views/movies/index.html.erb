@@ -1,0 +1,15 @@
+<div class="movie_totals">
+  本站已有 <b style="color:#d1492f;"><%=  Movie.has_attachs_count_cached %></b> 部电影/电视剧的高清下载。
+</div>
+
+<div class="movies">
+  <%= render "/movies/filter" if action_name != "top" %>
+  <% if @movies.blank? %>
+    <div class="no_result">
+      无法找到匹配的资源，你可以试试调整过滤条件。<%= link_to "清除过滤", movie_list_filter_url %>
+    </div>
+  <% else %>
+    <%= render :partial => "/movies/movie", :collection => @movies %>
+  <% end %>
+  <%= will_paginate @movies, :inner_window => 2, :outer_window => 1 %>
+</div>

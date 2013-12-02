@@ -1,0 +1,16 @@
+<%= render 'base' %>
+<div id="admin_homeland_reply">
+  <%= link_to '修改', edit_admin_homeland_reply_path(@reply), :class => "btn small success" %>
+    <p>
+    <b>Topic:</b>
+    <%= @reply.topic_id %>
+  </p>
+    <p>
+    <b>User:</b>
+    <%= @reply.user_id %>
+  </p>
+    <p>
+    <b>Body:</b>
+    <%= @reply.body %>
+  </p>
+  </div>

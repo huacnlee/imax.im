@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html style='height:100%;'>
+<head>
+  <title>
+    <%= @movie.title %>免费在线观看
+    <% if controller_name == "attachs" %>
+     - <%= @attach.name %>
+   <% else %>
+   - <%= @source.site_s %>提供资源
+    <% end %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="<%= @movie.title %>在线播放,<%= @movie.title %>在线观看" />
+  <meta name="description" content="<%= @movie.meta_description %>" />
+  <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "play" %>
+  <%= javascript_include_tag "application" %>
+  <script type="text/javascript">
+  var sidebarStatus = 0;
+  function toggleSidebar() {
+    if(sidebarStatus == 0){
+      sidebarStatus = 1;
+      $("#main").css("padding-left","0");
+      $("#sidebar").hide();
+      $("#collecter").css("left","0");
+      $("#collecter i").class("icon-thin-arrow-right");
+    }
+    else {
+      sidebarStatus = 0;
+      $("#main").css("padding-left","200px");
+      $("#sidebar").show();
+      $("#collecter").css("left","188px");
+      $("#collecter i").class("icon-thin-arrow-left");
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div id="sidebar">
+      <div class="inner">
+        <h1><%= movie_title_tag(@movie) %></h1>
+        <div class="infos">
+          <dl>
+            <dt>年代：</dt>
+            <dd><%= @movie.year %></dd>
+          </dl>
+          <dl>
+            <dt>国家：</dt>
+            <dd><%= @movie.country_list %></dd>
+          </dl>
+          <dl>
+            <dt>类型：</dt>
+            <dd><%= movie_tags_tag(@movie, :categories, :limit => 2) %></dd>
+          </dl>
+          <dl>
+            <dt>主演：</dt>
+            <dd><%= movie_tags_tag(@movie, :actors, :limit => 2) %></dd>
+          </dl>
+          
+        </div>
+        <div class="buttons">
+          <%= link_to "更多观看资源",movie_path(@movie), :class => "btn btn-block btn-primary" %>
+          <br />
+          <% if admin? %>
+            <% if controller_name == "sources" %>
+            <%= link_to "信息有误！删除", movie_source_path(@movie, @source), method: "delete", confirm: "确定要删除么？" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="site_info">
+          <a href="http://imax.im">imax.im</a> 高清电影
+        </div>
+      </div>
+    </div>
+    <button id="collecter" class="btn" onclick="toggleSidebar();"><i class="icon-thin-arrow-left"></i></button>
+    <div id="main" style='height:100%;'>   
+      <% if controller_name == "attachs" %>
+      <iframe frameborder="0" style='height:100%;' src="<%= @attach.play_url %>">
+      </iframe>
+      <% else %>
+      <iframe frameborder="0" style='height:100%;' src="<%= @source.url %>">
+      </iframe>
+      <% end %>
+    </div>
+  </div>
+</body>
+</html>

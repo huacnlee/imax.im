@@ -1,0 +1,22 @@
+<div class="pull-right" style="text-align:left;">
+<% if admin? %>
+<span class="dropdown">
+    <a class="dropdown-toggle btn btn-small" data-toggle="dropdown" href="#">
+      管理菜单 <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li> <%= link_to "修改...", edit_admin_movie_path(@movie.id) %> </li>
+      <li class="divider"></li>
+      <li><%= link_to "刷新信息", fetch_douban_movie_path(@movie.id) %> </li>
+      <li><%= link_to "刷新封面图片", fetch_cover_movie_path(@movie.id) %> </li>
+      <li class="divider"></li>
+      <li><%= link_to "从 Fenopy 上面获取资源", fetch_fenopy_movie_path(@movie.id) %> </li>
+      <li><%= link_to "获取国内在线播放资源", fetch_sources_movie_path(@movie.id) %> </li>
+      <li><%= link_to "资源收割器...", "#fetch-attachs-window", :onclick => "$('#fetch-attachs-window').modal();return false;", :data => { :toggle => "model" } %>
+      <li class="divider"></li>
+      <li><%= link_to "首页特别推荐", "#", :onclick => "return Movies.suggest(this,#{@movie.id},1);" %> </li>
+      <li><%= link_to "上首页", "#", :onclick => "return Movies.suggest(this,#{@movie.id},0);" %> </li>
+    </ul>
+  </span>
+<% end %>
+</div>

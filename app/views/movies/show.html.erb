@@ -1,0 +1,122 @@
+<%= content_for :css do %>
+<style type="text/css" media="screen">
+#rand_tips,
+.breadcrumb { display:none;}
+.attachs .XL_CLOUD_VOD_BUTTON_btn_b { margin-top:-1px; }
+</style>
+<% end %>
+<%= content_for :js do %> 
+  <script type="text/javascript" src="http://vod.xunlei.com/js/share.js" async="true" charset="utf-8"></script>
+<% end %>
+<div id="movie" itemscope itemtype="http://schema.org/Movie">
+  <div class="box">
+    <div class="share">
+      <%= social_share_button_tag("#{@movie.movie_type}《#{@movie.title}》(#{@movie.year}) #{@movie.rank_s} #{@movie.country_list} #{@movie.actor_list_for_share} #{@movie.attachs.last.name if !@movie.attachs.blank?} ##{@movie.title}#", :rel => "twipsy", :label => "分享: ", :image => @movie.cover.url) %>
+    </div>
+    <%= render "manage_button" %>
+    <div class="infos row">
+      <div class="cover span2">
+        <%= image_tag(@movie.cover.large.url, :itemprop => "image") %>
+      </div>
+      
+      <%= render "details" %>
+    </div>
+  </div>
+
+  <div class="summary box">
+    <div class="content">
+      <% if !@movie.tagline.blank? %>
+        <div class="tagline"><%= @movie.tagline %></div>
+      <% end %>
+      <span itemprop="about">
+        <% if !@movie.summary.blank? %>
+          <%= truncate(@movie.summary, :length => 200) %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+
+  <div id="downloads">
+    <%= render "attachs", :movie => @movie %>
+    <%= render "sources", :movie => @movie %>
+    <% if !mobile? %>
+      <%= raw SiteConfig.after_attach_list %>
+      <% if verified_user? %>
+      <div style="text-align:right;">
+        搜索:
+        <a href="http://www.yyets.com/php/search/index?keyword=<%= @movie.title %>" target="_blank" rel="nofollow">人人影视</a> •
+        <a href="http://btmee.net/search?q=<%= @movie.title %>" target="_blank" rel="nofollow">btmee.com</a> •
+        <a href="http://www.bttiantang.com/s.php?keyword=<%= @movie.title %>" target="_blank" rel="nofollow">BT天堂</a> •
+        <a href="http://publichd.se/index.php?page=torrents&search=<%= @movie.en_title %>&active=1&category=2%3B5" target="_blank">PublicHD</a>
+      </div>
+      <% end %>
+      <div id="subs" class="box">
+        <h2><%= @movie.title %>字幕下载 <span class="sub">by 射手网 <a href="http://shooter.cn/search/<%= @movie.title %>/" rel="nofollow" target="_blank" class="btn btn-mini btn-success" style="margin-left:20px;"><%= small_icon_tag("icon-search icon-white", :label => "搜索更多字幕...") %></a></span></h2>
+        <ul class="content">
+        </ul>
+        <script type="text/javascript">
+          Movies.loadSubs("<%= @movie.title %>");
+        </script>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="box" id="relation">
+    <h2>类似的电影</h2>
+    <%= render_cell :movies, :tagged_with_actors, @movie, :retina => retina? %>
+  </div>
+
+  <% if admin? && !mobile? %>
+  <div id="fetch-attachs-window" class="modal fade">
+    <div class="modal-header">
+      <a type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</a>
+      <h3>资源收割器</h3>
+    </div>
+    <div  class="modal-body">
+      <div class="fetch_box">
+        <textarea id="fetch-attachs-html" style="width:520px;height:300px;"></textarea>
+        <a href="#" onclick="return Movies.ajaxFetchAttachs();" class="btn btn-primary">收集</a>
+      </div>
+      <div class="process_box" style="display:none;">
+        <div class="progress progress-success progress-striped active" style="margin:40px 0;"><div class="bar" style="width:100%;"></div></div>
+      </div>
+      <div class="choice_box" style="display:none;">
+        <form action="<%= movie_attachs_path(:movie_id => @movie.id) %>" class="attachs" method="post">
+          <%= auth_token_tag %>
+          <input type="hidden" name="multi" value="1" />
+          <table class="table" id="fetch_results">
+            <thead>
+              <tr>
+                <th>大小</th>
+                <th>文件名</th>
+                <th>
+                  <input type="radio" name="aq" value="480" /> 480p<br />
+                  <input type="radio" name="aq" value="720" /> 720p<br />
+                  <input type="radio" name="aq" value="1080" /> 1080p<br />
+                </th>
+                <td>
+                  <input type="checkbox" name='ac' checked="checked" />
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          <script type="text/javascript" charset="utf-8">
+          $("table#fetch_results input[name=aq]").change(function(){
+            $('table#fetch_results tbody select').val($(this).val());
+          });
+          $("table#fetch_results input[name=ac]").change(function(){
+            $('table#fetch_results tbody input').attr('checked',($(this).attr('checked') != undefined));
+          });
+          </script>
+          <button type="submit" class="btn btn-primary">提交</button>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      填入 URL，从对方的网页上面收集电驴资源过来。
+    </div>
+  </div>
+  <% end %>
+</div>

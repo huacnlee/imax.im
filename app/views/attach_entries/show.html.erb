@@ -1,0 +1,67 @@
+<div id="attach_entry">
+  <h1><%= @attach.name %></h1>
+  <div class="box">
+    <div class="desc">
+      <% if !@movie.blank? %>
+        <%= simple_format @movie.summary %>
+      <% end %>
+    </div>
+  </div>
+  <div class="box">
+    <h2>
+      下载地址
+      <b style="color:#999;margin-left:10px;">(<%= @attach.file_size %>G)</b>
+    </h2>
+    <div class="content">
+      <textarea class="url_box"><%= @attach.url %></textarea>
+    </div>
+  </div>
+  <div class="box" class="buttons">
+    <%= link_to raw("<i class='icon-plus icon-white'></i> 添加到迅雷离线"), @attach.lixian_add_url, :class => "btn btn-success" %>
+    <%= attach_entry_play_button_tag(@attach) %>
+  </div>
+
+  <div class="box" class="more_likes">
+    <h2>其他相关的资源</h2>
+    <ul>
+      <% @like_search.each do |item| %>
+        <li><%= link_to item.name, attach_entry_path(item.id) %></li>
+      <% end %>
+    </ul>
+		<div class="more"><%= link_to "查看更多...", search_attach_entries_path(:q => @attach.name), :rel => "nofollow" %></div>
+  </div>
+</div>
+
+<div id="comments" class="box">
+  <%= render "/shared/comments" %>
+</div>
+
+
+<% content_for :sidebar do %>
+  <div class="box">
+    <ul>
+      <% if verified? %>
+        <li><%= link_to "修改资源信息",edit_attach_entry_path(@attach.id) %></li>
+      <% end %>
+      <% if admin? %>
+        <li><%= link_to "删除",attach_entry_path(@attach.id), :method => :delete, :'data-confirm' => "确定要删除吗？" %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% if !@movie.blank? %>
+    <div id="attach_entry_like_movies" class="box">
+      <h2>对应电影</h2>
+      <div class="content center">
+        <div class="cover">
+          <%= movie_cover_tag(@movie,:style => :normal) %>
+        </div>
+        <div class="name">
+          <%= movie_title_tag(@movie) %>
+        </div>
+        <div class="rank_line">
+          <%= movie_rank_tag(@movie, :style => :big) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

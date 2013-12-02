@@ -1,0 +1,19 @@
+defaults: &defaults
+  identity_map_enabled: true
+  pool_size: 16
+
+development:
+  <<: *defaults
+  host: localhost
+  database: movieso_dev
+  identity_map_enabled: true
+
+test:
+  <<: *defaults
+  host: localhost
+  database: imaxim_test
+
+production:
+  <<: *defaults
+  host: '127.0.0.1'
+  database: imaxim

@@ -1,0 +1,8 @@
+<div class="box">
+  <h2>最近上映</h2>
+  <div class="row">
+    <% @movies.each do |item| %>
+      <%= movie_sidebar_item_tag(item) %>
+    <% end %>
+  </div>
+</div>

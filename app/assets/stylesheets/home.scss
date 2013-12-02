@@ -1,0 +1,76 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#home_page {
+  .box1 {
+    margin-top:20px;
+    position:relative;
+    margin-bottom:20px;
+    padding-bottom:20px;
+    border-bottom:2px solid #eee;
+    .items {
+      margin-left:0px;
+      ul, ol {
+        margin:0; padding:0;
+      }
+      li.item {
+        width: 156px; text-align: center;
+        list-style:none; margin:0; padding:0;
+        .cover {
+          height: 200px; overflow:hidden;
+          img { width: 130px; }
+        }
+        height: 240px;
+      }
+    }
+  }
+
+  .box2 {
+    position:relative;
+    margin-bottom:20px;
+    h2 {
+      font-size:14px; font-weight:normal;
+      background:#4b65c6; color:#fff;
+      width:90px;
+      position:absolute;
+      left:0; top:0;
+      text-align:center;
+      a {
+        text-decoration:none; color:#FFF;
+        &:hover { text-decoration:underline; }
+      }
+    }
+    .items {
+      border:1px solid #ddd;
+      border-top:3px solid #4b65c6;
+      padding:20px;
+      margin:0;
+      margin-left: 89px;
+      width: 809px;
+      ul, ol {
+        margin:0; padding:0;
+      }
+      li.item {
+        width: 133px; text-align: center;
+        list-style:none; margin:0; padding:0;
+        .cover {
+          height: 155px; overflow:hidden;
+          img { width: 100px; }
+        }
+        height: 190px;
+        .movie_rank {
+          .icon { margin-bottom:-1px;}
+        }
+      }
+    }
+  }
+  .box_right {
+    h2 { right:0; left:auto; background:#389033; }
+    .items {
+      border:1px solid #ddd;
+      border-top:3px solid #389033;
+      margin:0;
+      margin-right:90px;
+    }
+  }
+}

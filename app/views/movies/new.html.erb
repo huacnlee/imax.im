@@ -1,0 +1,24 @@
+<% if DoubanRequest.allow? %>
+  <%= simple_form_for(@movie) do |f| %>
+    <%= render "shared/error_messages", :target => @movie %> 
+    <fieldset>
+      <legend>发布电影资源</legend>
+      <%= f.input :douban_url, :input_html => {:class => "span5"} %>
+      <%= f.input :imdb_url, :input_html => {:class => "span5"} %>
+      <div class="form-actions">
+        <%= f.submit "发布电影", :class => "btn btn-primary" %> 或
+        <%= link_to '返回', movies_path %>
+      </div>
+    </fieldset>
+  <% end %>
+<% else %>
+  <div class="no_result">抱歉，由于豆瓣 API 限制，暂时无法添加电影信息，请1分钟以后再尝试。</div>
+<% end %>
+<%= content_for :sidebar do %>
+  <div class="box">
+    <h2>提示</h2>
+    <div class="content">
+      在下面填入电影在豆瓣的URL地址，或者 IMDB 编号，两者任选其一，提交后将会自动获取到影片的信息。
+    </div>
+  </div>
+<% end %>

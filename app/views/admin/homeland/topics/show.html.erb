@@ -1,0 +1,20 @@
+<%= render 'base' %>
+<div id="admin_homeland_topic">
+  <%= link_to '修改', edit_admin_homeland_topic_path(@topic), :class => "btn small success" %>
+    <p>
+    <b>Title:</b>
+    <%= @topic.title %>
+  </p>
+    <p>
+    <b>Body:</b>
+    <%= @topic.body %>
+  </p>
+    <p>
+    <b>User:</b>
+    <%= @topic.user_id %>
+  </p>
+    <p>
+    <b>Hits:</b>
+    <%= @topic.hits %>
+  </p>
+  </div>

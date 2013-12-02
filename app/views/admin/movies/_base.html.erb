@@ -1,0 +1,27 @@
+<%= content_for :styles do %>
+<% end %>
+
+<ul class="nav nav-tabs">
+  <li<%= " class=active" if action_name == "index" %>>
+    <%= link_to "列表", admin_movies_path %>
+  </li>
+  <% if action_name.in?(%w(edit update)) %>
+  <li class="active"><%= link_to "修改", edit_admin_movie_path(@movie) %></li>
+  <% end %>
+  <% if action_name.in?(%w(show)) %>
+  <li class="active"><%= link_to "查看", admin_movie_path(@movie) %></li>
+  <% end %>
+  <li<%= " class=active" if action_name.in?(%w(new create)) %>><%= link_to "新建", new_admin_movie_path %></li>
+</ul>
+<form onsubmit="return goToId();">
+  <div class="input-append pull-right" style="margin-top:-35px;">
+    <input type="text" placeholder="编号直达" id="fastGoId" name="id" class="span1" style="margin-bottom:0px;line-height:14px;" /><button class="btn" id="fastGo" type="submit">查看</button>
+  </div>
+  <script type="text/javascript">
+    function goToId(){
+      id = $("#fastGoId").val()
+      location.href = "<%= admin_movies_path %>/" + id;
+      return false;
+    }
+  </script>
+</form>

@@ -1,0 +1,16 @@
+<%= render 'base' %>
+<div id="admin_homeland_node">
+  <%= link_to '修改', edit_admin_homeland_node_path(@node), :class => "btn small success" %>
+    <p>
+    <b>Section:</b>
+    <%= @node.section_id %>
+  </p>
+    <p>
+    <b>Name:</b>
+    <%= @node.name %>
+  </p>
+    <p>
+    <b>Sort:</b>
+    <%= @node.sort %>
+  </p>
+  </div>

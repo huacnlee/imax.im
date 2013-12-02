@@ -1,0 +1,30 @@
+<div id="admin_movie" class="form">
+
+<%= simple_form_for([:admin,@movie]) do |f| %>
+  <%= render "/shared/error_messages", :target => @movie  %>
+  <fieldset>
+      <%= f.input :hide, :as => :boolean %>
+      <%= f.input :title %>
+      <%= f.input :alias_list, :as => :string, :input_html => { :class => "span8" } %>
+      <%= f.input :tagline, :input_html => { :class => "span8" } %>
+      <%= f.input :cover %>
+      <%= f.input :cover_url, :input_html => { :class => "span8" } %>
+      <%= f.input :bg %>
+      <%= f.input :bg_url, :input_html => { :class => "span8" } %>
+      <%= f.input :bg_offset %>
+      <%= f.input :year %>
+      <%= f.input :tag_list, :as => :string, :input_html => { :class => "span8" } %>
+      <%= f.input :time_length %>
+      <%= f.input :imdb %>
+      <%= f.input :rank %>
+      <%= f.input :raters_count %>
+      <%= f.input :summary, :as => :text, :input_html => { :class => "span8", :rows => "4"} %>
+      <%= f.input :last_uploaded_at %>
+      <%= f.input :series, :as => :boolean %>
+      <div class="form-actions">
+      <%= f.submit "保存", :class => "btn btn-primary" %> or <%= link_to "取消", admin_movies_path %>
+      <%= link_to "删除这部电影", admin_movie_path(@movie.id), :method => :delete, :class => "btn btn-danger pull-right", :'data-confirm' => "确定要删除么？" %>
+    </div>
+  </fieldset>
+<% end %>
+</div>

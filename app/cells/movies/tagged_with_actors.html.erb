@@ -1,0 +1,7 @@
+<div class="box">
+  <div class="row">
+    <% @movies.each do |item| %>
+      <%= movie_sidebar_item_tag(item) %>
+    <% end %>
+  </div>
+</div>

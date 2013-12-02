@@ -1,0 +1,14 @@
+<div id="admin_site_config" class="form">
+
+<%= simple_form_for([:admin,@site_config]) do |f| %>
+  <%= render "/shared/error_messages", :target => @site_config  %>
+  <h2><%= t("site_config.#{@site_config.key}") %></h2>
+  <fieldset>
+    <%= f.input :key %>
+    <%= f.input :value, :as => :text, :input_html => { :class => "span8", :rows => 8 } %>
+    <div class="form-actions">
+      <%= f.submit "保存", :class => "btn btn-primary" %> or <%= link_to "取消", admin_site_configs_path %>
+    </div>
+  </fieldset>
+<% end %>
+</div>

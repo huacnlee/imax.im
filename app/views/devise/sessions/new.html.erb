@@ -1,0 +1,31 @@
+<% content_for :sitemap do %><span class="current">加入社区</span><% end %>
+<div class="content">
+    <div class="box">
+    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <fieldset>
+        <legend>登录</legend>
+        <%= f.input :email %>
+        <%= f.input :password, :as => :password %>
+        <%= render "/shared/captcha_field", :f => f %>
+        <% if devise_mapping.rememberable? -%>
+        <div class="control-group">
+          <label class="control-label" for="optionsCheckbox2"></label>
+          <div class="controls">
+            <label class="checkbox" for="user_remember_me">
+              <%= f.check_box :remember_me, :checked => true, :style => "display:none" %>
+            </label>
+          </div>
+        <% end -%>
+        <div class="form-actions">
+          <%= f.submit "登录", :class => "btn btn-primary", 'data-disable-with' => "登录中..." %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
+<%= content_for :sidebar do %>
+  <div class="box">
+    <h2>还没有帐号？</h2>
+    <%= render :partial => "devise/shared/links" %>
+  </div>
+<% end %>

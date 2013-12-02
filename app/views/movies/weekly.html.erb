@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html style="font-size:13px; margin:0; padding:0;">
+<head>
+  <title>IMAX.im 电影周刊</title>
+  <meta charset='utf-8'>
+  <meta name="apple-mobile-web-app-capable" content="no">
+  <meta content='True' name='HandheldFriendly' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+</head>
+<body style="font-size:13px; margin:0; padding:0;">
+  <h1 style="background:#f6f6f6; border-bottom:1px solid #ddd; text-align:center; font-size:20px; padding:10px 0; margin:0; margin-bottom:20px; font-weight:bold; color:#666;">
+    <span style='font-size:25px;font-family:arial;font-style: italic;'><span style='color:black'>I</span><span style='color:#4a65c6;'>MAX</span></span><span style='font-style: italic;'>.im</span> 电影周刊
+  </h1>
+  
+  <div style="padding:0 20px 20px 20px; line-height:140%; border-bottom:1px solid #ddd; margin-bottom:20px;">
+    <%= raw SiteConfig.weekly_tip %>
+  </div>
+  
+<% @movies.each do |movie| %>
+<div style="margin-bottom:50px; padding:5px 20px;">
+  <div style="font-size:20px;">
+    <%= link_to movie.title, movie_url(movie), style: "color:#5876e7; text-decoration:none; font-weight:bold;" %> <span style='color:#666;font-size:14px; margin-right:20px;'>(<%= movie.year %>)</span>
+    <span style="color:#ee9f26;font-weight:bold;"><%= movie.rank_s %></span>
+  </div>
+  <div style="margin:10px 0;">
+    <%= link_to image_tag(movie.cover.url(:large), style: 'width:300px'), movie_url(movie) %>
+  </div>
+  <div style="margin:10px 0">
+    <table style='color:#666;'>
+      <tr>
+        <td style='width:40px;'>类型：</td><td><%= movie.category_list %></td>
+      </tr>
+      <tr>
+        <td>地区：</td><td><%= movie.country_list %></td>
+      </tr>
+      <tr>
+        <td>主演：</td><td><%= movie.actor_list %></td>
+      </tr>
+      <tr>
+        <td>又名：</td><td><%= movie.alias_list %></td>
+      </tr>
+    </table>
+    <% if !movie.tagline.blank? %>
+    <div style='color:red'><%= simple_format movie.tagline %></div>
+    <% end %>
+    <div style='font-size:12px;line-height:130%'>
+      <%= simple_format movie.summary %>
+    </div>
+    <ul style="background:#eee; border:1px solid #ddd; padding:10px; border-radius:5px; padding-left:30px;">
+      <% movie.attachs.each do |a| %>
+      <li style='padding:4px 0;'><%= link_to a.name , movie_url(movie), :style => 'color:#333;' %></li>
+      <% end %>
+    </ul>
+  </div>
+  
+</div>
+<% end %>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<div id="admin_homeland_topic" class="form">
+
+	<%= simple_form_for([:admin, :homeland,@topic]) do |f| %>
+  <%= render "/shared/error_messages", :target => @topic  %>
+  <fieldset>
+      <%= f.input :title %>
+      <%= f.input :body %>
+      <%= f.input :user_id %>
+      <%= f.input :hits %>
+      <div class="form-actions">
+      <%= f.submit "保存", :class => "btn btn-primary" %> or <%= link_to "取消", admin_homeland_topics_path %>
+    </div>
+  </fieldset>
+<% end %>
+</div>

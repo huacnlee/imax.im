@@ -1,0 +1,7 @@
+<div class=="control-group string">
+  <%= f.label :captcha %>
+  <div class="controls">
+    <%= f.input_field :captcha, :style => "width:50px;" %>
+    <%= captcha_tag %><a href="#" onclick="return App.reloadCaptcha(this);" rel="twipsy" title="点击可以换一个验证码">看不清</a>
+  </div>
+</div>

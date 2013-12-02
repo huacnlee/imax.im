@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render_page_title %>
+  <meta name="keywords" content="<%= @meta_keywords %>" />
+  <meta name="description" content="<%= truncate(@meta_description, :length => 150) %>" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <%= auto_discovery_link_tag(:rss,main_app.feed_movies_url,:title => '订阅最新发布') %>
+  <meta charset='utf-8'>
+  <%= raw SiteConfig.custom_head_html %>
+  <%= stylesheet_link_tag    "application" %>
+  <!--[if IE 6]>
+  <%= stylesheet_link_tag    "bootstrap-ie6" %>
+  <![endif]-->
+  <% if mobile? %>
+  <meta name="apple-mobile-web-app-capable" content="no">
+  <meta content='True' name='HandheldFriendly' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <%= stylesheet_link_tag "mobile" %>
+  <% end %>
+  <%= yield :css %>
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <%= csrf_meta_tags %>
+</head>
+<body data-offset="50">
+  <%= javascript_include_tag "application" %>
+  <!--[if IE 6]>
+  <%= javascript_include_tag    "bootstrap-ie6" %>
+  <![endif]-->
+  <script type="text/javascript">
+    SETTING_API_DOMAIN = '<%= Setting.api_domain %>';
+    SETTING_API_URL = 'http://<%= Setting.api_domain %>';
+  </script>
+  <%= yield :js %>
+  <%= render "/shared/navbar" %>
+  <div id="movie_bg"><div id="movie_bg_overlay"></div></div>
+  <div id="mainbox">
+    <%= raw SiteConfig.after_header %>
+    <div class="container container-fluid">
+      <% if !SiteConfig.notice.blank? %>
+        <div id="rand_tips" class="alert alert-info alert-notice">
+          <% notices =  SiteConfig.notice.split("\n") %>
+          <%= raw notices[rand(notices.count)] %>
+        </div>
+      <% end %>
+      <%= notice_message %>
+      <div id="<%= controller_name %>" class="row-fluid">
+        <% if not (sidebar_html = yield(:sidebar)).blank? %>
+          <div class="span9">
+            <%= yield %>
+          </div>
+          <div class="span3 sidebar">
+            <%= sidebar_html %>
+          </div>
+        <% else %>
+          <%= yield %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= render "/shared/footer" %>
+</body>
+</html>

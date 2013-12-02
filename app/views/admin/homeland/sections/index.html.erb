@@ -1,0 +1,30 @@
+<%= render 'base' %>
+<div id="admin_homeland_sections">
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>编号</th>
+        <th><%= t("mongoid.attributes.section.name") %></th>
+        <th><%= t("mongoid.attributes.section.sort") %></th>
+        <th>创建时间</th>
+        <th class="opts"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @sections.each do |item| %>
+    <tr class="<%= cycle("","even") %>">
+        <td><%= item.id %></td>
+        <td><%= item.name %></td>
+        <td><%= item.sort %></td>
+        <td><%= l(item.created_at, :format => :long) %></td>
+        <td>
+          <%= link_to "", edit_admin_homeland_section_path(item.id), :class => "icon-edit" %>
+          <%= link_to '', admin_homeland_section_path(item.id), :method => :delete, :'data-confirm' => '确定要删除吗?', :class => "icon-remove" %>
+        </td>
+      </tr>
+    <% end %>
+    <tbody>
+  </table>
+  <%= will_paginate @sections %>
+</div>
+

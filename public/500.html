@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>500 错误</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/assets/favicon.png" />
+  <meta charset='utf-8'>
+  <link href="/assets/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body data-offset="50">
+
+  <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a href="/" class="brand span2"><img alt="Logo" src="/assets/logo.png" /></a>
+      <ul class="nav main-nav">
+        <li><a href="/">首页</a></li>
+        <li><a href="/movies">电影</a></li>
+        <li><a href="/movies/series">电视剧</a></li>
+        <li><a href="/movies/top">高分</a></li>
+        <li><a href="/entries">资源区</a></li>
+        <li><a href="/bbs/">论坛</a></li>
+        <li style="margin-left:20px;">
+          <form class="navbar-search" action="/movies/search">
+            <div class="input-append">
+              <input type="text" name="q" class="search-query span3" value="" placeholder="输入关键词，搜索资源">
+              <button type="submit" class="btn btn-success"><i class="icon-search icon-white"></i></button>
+            </div>
+          </form>
+        </li>
+      </ul>
+      <ul class="nav user-bar pull-right">
+          <li><a href="/account/sign_up">注册</a></li>
+          <li><a href="/account/sign_in">登录</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container container-fluid">
+
+  <div class="error_page">
+    <div class="info">
+      <p class="body">
+        如此强大的系统居然能遇到不可预计的异常！<br /><br />
+        别着急，我们已经记录下问题原因<br />工程师们会尽快修正它！
+      </p>
+      <p>
+        <a href="/" class="btn btn-success">回到首页</a>
+        <a href="/bbs/topics/new?node=3" class="btn btn-danger">反馈问题</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
