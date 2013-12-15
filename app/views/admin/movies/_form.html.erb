@@ -23,7 +23,9 @@
       <%= f.input :series, :as => :boolean %>
       <div class="form-actions">
       <%= f.submit "保存", :class => "btn btn-primary" %> or <%= link_to "取消", admin_movies_path %>
-      <%= link_to "删除这部电影", admin_movie_path(@movie.id), :method => :delete, :class => "btn btn-danger pull-right", :'data-confirm' => "确定要删除么？" %>
+      <% if action_name.in?(%w(edit update))%>
+        <%= link_to "删除这部电影", admin_movie_path(@movie.id), :method => :delete, :class => "btn btn-danger pull-right", :'data-confirm' => "确定要删除么？" %>
+      <% end %>
     </div>
   </fieldset>
 <% end %>
