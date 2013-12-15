@@ -62,6 +62,7 @@ class Home
   end
 
   def self.get_array_ids(val)
+    return [] if val.nil?
     ids = val.split(/,|，/).uniq.collect { |id| id.to_i }
   end
 
