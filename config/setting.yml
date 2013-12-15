@@ -7,6 +7,7 @@ defaults: &defaults
   douban_token: "0898024726bbf1ec19c806d57433d5c4"
   douban_secret: "c76674cd8c482f90"
   xunlei_pid: 987212
+  upload_url: <%= "#{Rails.root}/public" %>
 
 development:
   <<: *defaults
